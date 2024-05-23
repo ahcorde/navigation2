@@ -27,7 +27,7 @@ from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_ros.actions import Node
-from launch_ros.actions import PushROSNamespace
+from launch_ros.actions import PushRosNamespace #https://github.com/ros-planning/navigation2/issues/3840
 from launch_ros.descriptions import ParameterFile
 from nav2_common.launch import ReplaceString, RewrittenYaml
 
@@ -136,7 +136,7 @@ def generate_launch_description():
     # Specify the actions
     bringup_cmd_group = GroupAction(
         [
-            PushROSNamespace(condition=IfCondition(use_namespace), namespace=namespace),
+            PushRosNamespace(condition=IfCondition(use_namespace), namespace=namespace),
             Node(
                 condition=IfCondition(use_composition),
                 name='nav2_container',

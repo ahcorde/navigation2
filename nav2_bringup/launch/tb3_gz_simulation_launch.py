@@ -224,8 +224,10 @@ def generate_launch_description():
     # take SDF strings for worlds, so the output of xacro needs to be saved into
     # a temporary file and passed to Gazebo.
     world_sdf = tempfile.mktemp(prefix='nav2_', suffix='.sdf')
+    print(f"{world_sdf}")
     world_sdf_xacro = ExecuteProcess(
         cmd=['xacro', '-o', world_sdf, ['headless:=', headless], world])
+    print(f"{world_sdf_xacro}")
     gazebo_server = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(get_package_share_directory('ros_gz_sim'), 'launch',
