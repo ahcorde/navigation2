@@ -150,7 +150,8 @@ def generate_launch_description():
             ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(
-                    os.path.join(launch_dir, 'wamv_localization_launch.py')
+                    # os.path.join(launch_dir, 'wamv_localization_launch.py')
+                    os.path.join(launch_dir, 'wamv_localization_ad_ros2_launch.py')
                 ),
                 condition=IfCondition(PythonExpression(['not ', slam])),
                 launch_arguments={
