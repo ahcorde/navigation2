@@ -171,17 +171,6 @@ def generate_launch_description():
                 arguments=['--ros-args', '--log-level', log_level],
                 remappings=remappings,
             ),
-            # Node(
-            #     package='nav2_amcl',
-            #     executable='amcl',
-            #     name='amcl',
-            #     output='screen',
-            #     respawn=use_respawn,
-            #     respawn_delay=2.0,
-            #     parameters=[configured_params],
-            #     arguments=['--ros-args', '--log-level', log_level],
-            #     remappings=remappings,
-            # ),
             Node(
                     package="ad_ros2",
                     executable="localization_node",
@@ -258,13 +247,6 @@ def generate_launch_description():
             LoadComposableNodes(
                 target_container=container_name_full,
                 composable_node_descriptions=[
-                    # ComposableNode(
-                    #     package='nav2_amcl',
-                    #     plugin='nav2_amcl::AmclNode',
-                    #     name='amcl',
-                    #     parameters=[configured_params],
-                    #     remappings=remappings,
-                    # ),
                     ComposableNode(
                             package="ad_ros2",
                             plugin="adr::LocalizationComponent",
@@ -291,12 +273,6 @@ def generate_launch_description():
         executable="static_transform_publisher",
         arguments = ['--x', '-532', '--y', '162', '--z', '0', '--yaw', '0', '--pitch', '0', '--roll', '0',
                      '--frame-id', 'map', '--child-frame-id', 'odom']
-        # arguments=[
-        #     "--frame-id",
-        #     "map",
-        #     "--child-frame-id",
-        #     "odom",
-        # ],  # sets to identity for missing args
     )
 
     # Create the launch description and populate
