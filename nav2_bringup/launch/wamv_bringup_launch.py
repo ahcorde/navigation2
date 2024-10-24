@@ -36,6 +36,7 @@ def generate_launch_description():
     # Get the launch directory
     bringup_dir = get_package_share_directory('nav2_bringup')
     launch_dir = os.path.join(bringup_dir, 'launch')
+    costmap_filter_launch_dir = os.path.join(get_package_share_directory('nav2_costmap_filters_demo'), 'launch')
     katamaran_nav2_bt_dir = get_package_share_directory('katamaran_nav2_bt')
 
     # Create the launch configuration variables
@@ -43,6 +44,7 @@ def generate_launch_description():
     use_namespace = LaunchConfiguration('use_namespace')
     slam = LaunchConfiguration('slam')
     map_yaml_file = LaunchConfiguration('map')
+    mask_yaml_file = LaunchConfiguration('mask')
     use_sim_time = LaunchConfiguration('use_sim_time')
     params_file = LaunchConfiguration('params_file')
     autostart = LaunchConfiguration('autostart')
@@ -98,6 +100,12 @@ def generate_launch_description():
 
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map', default_value='', description='Full path to map yaml file to load'
+    )
+
+    declare_mask_yaml_cmd = DeclareLaunchArgument(
+        'mask',
+        default_value=os.path.join(katamaran_nav2_bt_dir, 'maps', 'keepout_mask.yaml'),
+        description='Full path to mask yaml file to load'
     )
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
@@ -179,6 +187,20 @@ def generate_launch_description():
                     'container_name': 'nav2_container',
                 }.items(),
             ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    os.path.join(costmap_filter_launch_dir, 'costmap_filter_info.launch.py')
+                ),
+                launch_arguments={                  
+                    'namespace': namespace,
+                    'map': map_yaml_file,
+                    'use_sim_time': use_sim_time,
+                    'autostart': autostart,
+                    'params_file': params_file,
+                    'mask': mask_yaml_file,
+                    'container_name': 'nav2_container',
+                }.items(),
+            ),             
         ]
     )
 
@@ -193,6 +215,7 @@ def generate_launch_description():
     ld.add_action(declare_use_namespace_cmd)
     ld.add_action(declare_slam_cmd)
     ld.add_action(declare_map_yaml_cmd)
+    ld.add_action(declare_mask_yaml_cmd)
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_autostart_cmd)
