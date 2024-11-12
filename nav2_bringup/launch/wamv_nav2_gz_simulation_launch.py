@@ -99,7 +99,8 @@ def generate_launch_description():
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
         # default_value=os.path.join(bringup_dir, 'maps', 'turtlebot3_world.yaml'),
-        default_value=os.path.join(katamaran_nav2_bt_dir, 'maps', 'binary_map.yaml'),
+        default_value=os.path.join(katamaran_nav2_bt_dir, 'maps/old_map_files', 'binary_map.yaml'),
+        # default_value=os.path.join(katamaran_nav2_bt_dir, 'maps', 'sydney_regatta.yaml'),
         description='Full path to map file to load',
     )
 
