@@ -1,0 +1,9 @@
+image: binary_image_keepout_mask.pgm
+mode: scale
+# resolution: 0.00253165
+resolution: 0.7
+# origin: [-700, -705, 0]
+origin: [-1225, -540, 0]
+negate: 0
+occupied_thresh: 0.5
+free_thresh: 0.4

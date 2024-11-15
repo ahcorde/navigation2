@@ -37,7 +37,7 @@ def generate_launch_description():
     bringup_dir = get_package_share_directory('nav2_bringup')
     launch_dir = os.path.join(bringup_dir, 'launch')
     costmap_filter_launch_dir = os.path.join(get_package_share_directory('nav2_costmap_filters_demo'), 'launch')
-    katamaran_nav2_bt_dir = get_package_share_directory('katamaran_nav2_bt')
+    # katamaran_nav2_bt_dir = get_package_share_directory('katamaran_nav2_bt')
 
     # Create the launch configuration variables
     namespace = LaunchConfiguration('namespace')
@@ -104,7 +104,8 @@ def generate_launch_description():
 
     declare_mask_yaml_cmd = DeclareLaunchArgument(
         'mask',
-        default_value=os.path.join(katamaran_nav2_bt_dir, 'maps', 'keepout_mask.yaml'),
+        # default_value=os.path.join(katamaran_nav2_bt_dir, 'maps', 'keepout_mask.yaml'),
+        default_value=os.path.join(bringup_dir, 'maps', 'keepout_mask.yaml'),
         description='Full path to mask yaml file to load'
     )
 
@@ -116,7 +117,8 @@ def generate_launch_description():
 
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
-        default_value=os.path.join(katamaran_nav2_bt_dir, 'config', 'nav2_params.yaml'),
+        # default_value=os.path.join(katamaran_nav2_bt_dir, 'config', 'nav2_params.yaml'),
+        default_value=os.path.join(bringup_dir, 'params_imarex', 'nav2_params.yaml'),
         description='Full path to the ROS2 parameters file to use for all launched nodes',
     )
 

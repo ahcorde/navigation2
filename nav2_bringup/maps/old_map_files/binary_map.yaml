@@ -1,0 +1,9 @@
+image: sydney_regatta_binary_image.pgm
+mode: trinary
+# resolution: 0.00253165
+resolution: 1.2
+# origin: [-700, -705, 0]
+origin: [-1135, -577, 0]
+negate: 0
+occupied_thresh: 0.5
+free_thresh: 0.4

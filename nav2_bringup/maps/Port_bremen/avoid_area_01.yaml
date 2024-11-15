@@ -1,0 +1,8 @@
+
+image: /nav2_ros_gz/src/navigation2/nav2_bringup/maps/Port_bremen/avoid_area_01.pgm
+resolution: 1
+origin: [-1190.314885397558, -1800.2603323888034, 0.0]
+# origin in lon, lat (8.730154270418735, 53.12490657556324)
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196

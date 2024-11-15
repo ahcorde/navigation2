@@ -1,0 +1,8 @@
+
+image: /nav2_ros_gz/src/navigation2/nav2_bringup/maps/sydney_regatta.pgm
+resolution: 1
+origin: [-1085, -918, 0.0]
+# origin in lon, lat (150.67971565753072, -33.72422536427481)
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196

@@ -40,9 +40,9 @@ def generate_launch_description():
     # Get the launch directory
     bringup_dir = get_package_share_directory('nav2_bringup')
     launch_dir = os.path.join(bringup_dir, 'launch')
-    katamaran_nav2_bt_dir = get_package_share_directory('katamaran_nav2_bt')
+    # katamaran_nav2_bt_dir = get_package_share_directory('katamaran_nav2_bt')
     # This checks that tb3 exists needed for the URDF. If not using wamv, its safe to remove.
-    _ = get_package_share_directory('wamv_gazebo')
+    # _ = get_package_share_directory('wamv_gazebo')
 
     # Create the launch configuration variables
     slam = LaunchConfiguration('slam')
@@ -99,8 +99,9 @@ def generate_launch_description():
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
         # default_value=os.path.join(bringup_dir, 'maps', 'turtlebot3_world.yaml'),
-        default_value=os.path.join(katamaran_nav2_bt_dir, 'maps/old_map_files', 'binary_map.yaml'),
+        # default_value=os.path.join(katamaran_nav2_bt_dir, 'maps/old_map_files', 'binary_map.yaml'),
         # default_value=os.path.join(katamaran_nav2_bt_dir, 'maps', 'sydney_regatta.yaml'),
+        default_value=os.path.join(bringup_dir, 'maps', 'sydney_regatta.yaml'),
         description='Full path to map file to load',
     )
 
@@ -112,7 +113,8 @@ def generate_launch_description():
 
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
-        default_value=os.path.join(katamaran_nav2_bt_dir, 'config', 'nav2_params.yaml'),
+        # default_value=os.path.join(katamaran_nav2_bt_dir, 'config', 'nav2_params.yaml'),
+        default_value=os.path.join(bringup_dir, 'params_imarex', 'nav2_params.yaml'),
         description='Full path to the ROS2 parameters file to use for all launched nodes',
     )
 
